@@ -17,14 +17,9 @@ class SessionsController < ApplicationController
     end
     
     def destroy
-        unless session[:user_id].nil?
          session[:user_id] = nil
          flash[:success] = "You have been logged out"
          redirect_to root_path
-        else
-         flash[:danger] = "You are not logged in."
-         redirect_to root_path
-        end
     end
     
     
