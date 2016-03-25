@@ -17,7 +17,7 @@
                 </div>
                 <!-- Display edit and delete functions only if the user who is 
                      logged in is the same user who created the article. -->
-                  <% if logged_in? && current_user == article.user %>
+                  <% if logged_in? && (current_user == article.user || current_user.admin?) %>
                     <div class="article-actions">
                         <%= link_to "Edit this article", edit_article_path(article), class: "btn btn-xs btn-primary" %>
                         <%= link_to "Delete this article", article_path(article), method: :delete, 
