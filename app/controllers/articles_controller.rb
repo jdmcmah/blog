@@ -15,8 +15,7 @@ class ArticlesController < ApplicationController
   end
   
   def create
-    @article = Article.new(article_params)
-    #This is not right
+   @article = Article.new(article_params)
    @article.user = current_user
     if @article.save
       flash[:success] = "Your article was successfully submitted."
@@ -52,7 +51,7 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title, :description)
+      params.require(:article).permit(:title, :description, category_ids: [])
     end
     
     def set_article

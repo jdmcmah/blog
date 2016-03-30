@@ -17,6 +17,9 @@
                 </div>
                 <!-- Display edit and delete functions only if the user who is 
                      logged in is the same user who created the article. -->
+                  <% if article.categories.any? %>
+                    <p>Categories: <%= render article.categories %></p>
+                  <% end %>
                   <% if logged_in? && (current_user == article.user || current_user.admin?) %>
                     <div class="article-actions">
                         <%= link_to "Edit this article", edit_article_path(article), class: "btn btn-xs btn-primary" %>
